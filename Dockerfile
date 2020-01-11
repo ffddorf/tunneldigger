@@ -12,3 +12,5 @@ RUN apt-get update && apt-get -y install \
 WORKDIR /app
 COPY broker /app/
 RUN python setup.py install
+
+CMD [ "-m", "tunneldigger_broker.main", "/tunneldigger.conf" ]
