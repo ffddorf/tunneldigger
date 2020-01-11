@@ -13,4 +13,5 @@ WORKDIR /app
 COPY broker /app/
 RUN python setup.py install
 
+ENTRYPOINT [ "/usr/local/bin/python" ]
 CMD [ "-m", "tunneldigger_broker.main", "/tunneldigger.conf" ]
