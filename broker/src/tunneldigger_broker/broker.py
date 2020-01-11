@@ -172,8 +172,12 @@ class TunnelManager(object):
         except netfilter.table.IptablesError:
             pass
 
-        nat.create_chain(prerouting_chain)
-        nat.create_chain(postrouting_chain)
+        try:
+            nat.create_chain(prerouting_chain)
+            nat.create_chain(postrouting_chain)
+        except netfilter.table.IptablesError:
+            pass
+
         try:
             nat.delete_rule('PREROUTING', self.rule_prerouting_jmp)
         except netfilter.table.IptablesError:
